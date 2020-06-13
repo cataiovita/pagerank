@@ -1,0 +1,62 @@
+
+	Implementarea algoritmului PageRank, in metodele Algebraic, Iterative;
+
+					@@@@@@@@@@@@ Cerinta 1 @@@@@@@@@@@@
+	
+	Pentru implementarea cerintei 1, a algoritmului Iterative, am inceput prin
+a salva initial dimensiunea matricii, numarul de pagini, si o matrice pe care
+urmeaza sa o prelucrez, necesara pentru a determina matricea adiacenta grafului.
+Am salvat intr-un vector si numarul de elemente de pe fiecare linie, numarul
+de vecini ai fiecarui nod din graf. Am creat apoi matricea de adiacenta,
+parcurgand cu un index fiecare element al matricei nou-create si cu un altul
+ce porneste de la 3, matricea salvata anterior. 3 reprezinta coloana de pe care
+incep sa apara vecinii fiecarui nod de pe fiecare linie. Am impus apoi conditia
+ca in matricea de adiacenta sa nu existe muchii bidirectionale, iar apoi am 
+initiat vectorul Page-Rank. Vectorul l-am initiat ca pe fiecare pozitie sa
+aiba valoarea de 1 / N (vectorul trebuie sa aiba la fiecare pas suma elemente-
+lor egala cu 1). Am creat apoi matricea H, ce are valori necesare algoritmului
+Page-Rank, rezultata in urma parcurgerii matricei initiale de adicenta. M-am 
+folosit de vectorul salvat initial, cel ce contine numarul de vecini ai fiecarui
+nod ca sa determin elementele egale de pe coloanele matricei H, ce are structura
+asemanatoare initierii vectorului Page-Rank la pasul 0.
+    Apoi am parcurs iterativ calculand vectorul Page-Rank in functie de matricea
+H creata si coeficientul d, salvand vechiul R la fiecare iteratie, oprind astfel
+loop-ul in momentul in care norma dintre cei doi vectori devine mai mica decat
+eroarea epsilon.
+
+
+				@@@@@@@@@@@@ Cerinta 2 @@@@@@@@@@@@
+
+	In vederea implementarii cerintei 2, am abordat aceeasi tehnica ca la prima
+cerinta in vederea construirii matricei de adiacenta si a matricei H. Pentru a
+determina inversa matricei necesare (I - d * H), m-am folosit de algoritmul
+propus, Gram-Schmidt, pentru a descompune matricea, iar apoi am aflat matricea
+noua. M-am folosit si de functia SST pentru a determina inversa.
+Dupa aflarea matricei de iteratie, vectorul Page-Rank l-am determinat folosindu-ma
+de aceasta si de numarul de pagini pe care il am.
+
+
+				@@@@@@@@@@@@ Cerinta 3 @@@@@@@@@@@@
+
+	La cerinta 3, gradul de apartenenta l-am aflat analizand functia data pe 
+fiecare ramura, fiecare membru, in functie de intervalele date. Ca functia sa fie
+continua, e necesara egalitatea functiilor in punctele de legatura ale intervalelor
+(val1 si val2). Am egalat valorile functiei in aceste puncte, rezultand un sistem
+pe care l-am rezolvat, determinand variabilele a si b. In functie de aceste
+variabile, va rezulta si valoarea functiei pe intervalele necesare.
+	In functia PageRank, am determinat vectorii R1 si R2, vectori rezul-
+tati in urma aplicarii algoritmilor de la cerintele anterioare si am creat string-ul
+outputname, necesar scrierii in fisier, prin concatenarea numelui primit ca input
+si a extensiei .out. Am inceput sa scriu in fisier apoi, pornind cu numarul de 
+elemente - pagini, N, apoi a vectorului R1 si al lui R2- m-am folosit de functiile
+fprintf de scriere in fisier. Pentru determinarea ultimului vector(PR1), am aplicat
+functia preimplementata sort, cu parametrul descend, pentru a-l sorta descendent.
+Am parcurs apoi ambii vectori, R2 si PR1 pentru a salva pozitiile elementelor lui R2
+dinainte de sortare.
+	In vederea afisarii ultimului vector, am parcurs iterativ pana la dimensiunea
+paginilor, afisand pe rand fiecare index, fostul index din vectorul R2 al elemen
+tului curent, iar apoi am aplicat functia Apartenenta rezultand valoarea pe intervalul
+respectiv.
+
+
+
